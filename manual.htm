@@ -1,0 +1,626 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w4.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Codebot Shell Controls Manual</title>
+<style>
+
+	html, body	{
+		width: 100%;
+		height: 100%;
+		margin: 0;
+	}
+
+	body {
+		background-image: url(images/slash.gif);
+		background-repeat: repeat-x;
+		background-attachment: fixed;
+		background-position: top center;
+		background-color: #8aa8ce;
+	}
+
+	a {
+		color: steelblue;
+		text-decoration: none;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+
+	pre {
+		margin-left: 2em;
+	}
+
+	#top {
+		background-image: url(images/top.png);
+		width: 800px;
+		height: 18px;
+		margin: auto;
+		margin-top: 20px;
+	}
+
+	#mid {
+		postition: relative;
+		font-family: sans-serif;
+		background-image: url(images/mid.png);
+		background-repeat: repeat-y;
+		margin: auto;
+		width: 760px;
+		padding-left: 20px;
+		padding-right: 20px;
+		color: black;
+	}
+
+	#bottom {
+		background-image: url(images/bottom.png);
+		width: 800px;
+		height: 18px;
+		margin: auto;
+	}
+
+	#help {
+		flaot: left;
+	}
+
+	#title	{
+		float: left;
+		font-size: 14pt;
+		font-weight: bolder;
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+
+	#section	{
+		clear: left;
+		font-size: 12pt;
+		font-weight: bold;
+		margin-left: 1em;
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+
+	#paragraph {
+		font-size: 10pt;
+		margin-left: 2em;
+		margin-bottom: 1em;
+	}
+
+	table {
+		margin: 1em;
+		border: 1px solid gray;
+	}
+
+	tr {
+		margin: 1px;
+	}
+
+	td {
+		padding: 2px;
+	}
+
+	#help {
+		float: left;
+	}
+
+	#first {
+		background: silver;
+		width: 12em;
+	}
+
+	#second {
+		margin-left: 2em;
+		padding-right: 10px;
+		background: gainsboro;
+	}
+
+	#right {
+		border: 1px solid steelblue;
+		margin: 0;
+		margin-left: 2em;
+		margin-bottom: 2em;
+		float: right;
+		clear: right;
+	}
+
+	#left {
+		margin: 2em;
+		margin-left: 0;
+		float: left;
+		clear: left;
+	}
+
+	#center {
+		margin: 1em;
+		clear: both;
+	}
+
+	#border {
+		border: 1px solid steelblue;
+	}
+
+	#component {
+		border: 1px solid steelblue;
+		background: silver;
+		padding: 2px;
+		margin-right: 1em;
+		margin-bottom: 1em;
+		float: left;
+		clear: left;
+	}
+
+	#componentBreak {
+		margin: 3em;
+	}
+
+
+	#toc {
+	  clear: both;
+	  float: right;
+	  display: inline;
+	  border: 1px solid #cdd5e3;
+	  width: 184px;
+	  margin: 8px;
+	  margin-right: 0;
+	}
+
+	#toc ul {
+	  list-style-type: none;
+	  list-style-image: none;
+	  margin: 0;
+	  padding-left: 8px;
+	  text-align: left;
+	}
+
+	#toc li {
+	  text-indent: 0em;
+	  margin-bottom: 6px;
+	  font-size: 10pt;
+	}
+
+	#toc-header {
+	  margin: 4px;
+	  margin-bottom: 10px;
+	  font-size: 9pt;
+	  font-weight: bolder;
+	}
+
+	#toc-first {
+	  padding-left: 4px;
+	}
+
+	#up {
+		display: block;
+		float: left;
+		width: 14px;
+		height: 14px;
+		background: url(images/up.gif) top left no-repeat transparent;
+		margin-right: 4px;
+	}
+
+</style>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="top"></div>
+
+<div id="mid">
+
+<div id="toc">
+<div id="toc-header"><center>Table of Contents</center></div>
+<ul id="toc-first">
+<li><a href="#1">1 Introduction</a></li>
+<li><a href="#2">2 Package Installation</a></li>
+
+<li><a href="#3">3 Quick Start</a></li>
+<li><a href="#4">4 Component Overview</a></li>
+  <ul>
+    <li><a href="#4.1">4.1 TShellBubbles</a></li>
+    <li><a href="#4.2">4.2 TShellEdit</a></li>
+    <li><a href="#4.3">4.3 TShellPathEditBar</a></li>
+    <li><a href="#4.4">4.4 TShellTree</a></li>
+    <li><a href="#4.5">4.5 TShellView</a></li>
+    <li><a href="#4.6">4.6 TShellImages </a></li>
+    <li><a href="#4.7">4.7 TShellBinding</a></li>
+ </ul>
+<li><a href="#5">5 Notable Classes</a></li>
+</ul>
+</div>
+
+<img id="help" src="images/page.png" />
+<div id="title">Codebot Shell Controls Manual</div>
+
+<div id="section"><a name="1" id="up" href="#top"></a>Introduction</div>
+
+<div id="paragraph">
+The codebot shell controls is an easy to use set of shell classes, components, and controls for Embarcadero Delphi versions 7 and 2009. The programming tools in this package allow you to programatic access object in the shell namespace.</div>
+
+<div id="paragraph">The shell namespace is represented in Windows by Windows Explorer (explorer.exe). These shell namespace exist include virtual folders like the control panel and network places, files and folders, and attached devices such as printers and scanners. Shell objects can be invoked to show property pages, execute commands and other programs. More information about shell objects is available in more depth in <a href="http://www.codebot.org/delphi/?doc=9418">this article</a> on the codebot website.</div>
+
+<div id="paragraph">A video walkthrough of the contents of this package is available <a href="http://www.codebot.org/delphi/preview">here</a>.</div>
+
+<div id="section"><a name="2" id="up" href="#top"></a>Package Installation</div>
+
+<div id="paragraph">
+Extract the contents of the shell controls zip to your hard disk. Keep the directory structure intact and move the extracted contents to a development source code directory of your choice. Open Delphi, close all opened projects, then open the cobebot shell controls runtime package. The runtime package names for various Delphi versions are as follows:
+<table>
+<tr>
+<td id="first">d12botshellrun.dpk</td><td id="second">The runtime package for Delphi 2009</td>
+</tr>
+<tr>
+<td id="first">d7botshellrun.dpk</td><td id="second">The runtime package for Delphi 7</td>
+</tr>
+</table>
+As you open the runtime package you may receive version import messages asking to some files. This is normal, click yes or okay to any prompts. Once the package is open, select "Build" from your package project menu. The build should succeed. After you have built the runtime package close all projects.
+</div>
+<div id="paragraph">
+Next, open the codebot shell controls design time package. The design time package names are as follows:
+<table>
+<tr>
+<td id="first">d12botshelldsgn.dpk</td><td id="second">The design time package for Delphi 2009</td>
+</tr>
+<tr>
+<td id="first">d7botshelldsgn.dpk</td><td id="second">The design time package for Delphi 7</td>
+</tr>
+</table>
+Again, click through any prompts to recreate any files. Once the project is open, select "Install" from your package project menu. This will build and install the runtime packages. You should see a dialog with a message informing you that the Codebot Shell controls were installed correctly. Close the design time package. You should now have a "Codebot Shell" tab with the following controls: TShellBubbles, TShellEdit, TShallPathEditBar, TShellTree, TShellView, TSmallShellImages, TLargeShellImages, TShellBinding.
+</div>
+
+
+<div id="section"><a name="3" id="up" href="#top"></a>Quick Start</div>
+
+<div id="paragraph">Open Delphi and create a new VCL from project. Select the Codebot Controls tab from the component pallet and drop the following components on your form: TShellPathEditBar, TShellTree, TShellView, and TShellBinding. Double click TShellBinding, select all the controls, and press OK. Press F9 to run the project. You've just built a functional version of Windows Explorer.</div>
+
+<center><img id="center" src="images/shell.jpg" /></center>
+
+<div id="section"><a name="4" id="up" href="#top"></a>Component Overview</div>
+
+<!-- TShellBubbles -->
+<div id="paragraph"><img id="right" src="images/bubbles.jpg"><img id="component" src="images/shellbubbles.jpg"><a name="4.1" id="up" href="#top"></a><strong>TShellBubbles</strong> is a visual control which mimics the left most pane of an open dialogs on Windows XP. Like all Codebot Shell Controls, shell bubbles uses the Windows theming engine. In addition, again like all other shell controls, it relies on the shell system images. This means that the shell bubbles and all the other shell controls will visually "fit in" on your user's computer, without regard to the version of Windows the are running.</div>
+<div id="paragraph">The purpose of the shell bubbles control is to give the user quick access to frequent or important folders. As a programmer, you can add and reorder bubble items using special folder paths, or your own paths added programatically. You can set shell bubbles to use large or small icons, and you choose to turn off or on text labels. You can also control if the labels appear below or to the side of the folder's icon.</div>
+<div id="paragraph">The purpose of the shell bubbles control is to give the user quick access to frequent or important folders. As a programmer, you can add and reorder bubble items using special folder paths, or your own paths added programatically. You can set shell bubbles to use large or small icons, and you choose to turn off or on text labels. You can also control if the labels appear below or to the side of the folder's icon.</div>
+
+<div id="paragraph"><strong>Key Properties</strong>
+<table>
+<tr>
+<td id="first">Items</td><td id="second">A collection of TShellBubbleItem objects</td>
+</tr>
+<tr>
+<td id="first">ItemIndex</td><td id="second">The index of current TShellBubbleItem</td>
+</tr>
+<tr>
+<td id="first">NavigateRoot</td><td id="second">When used with binding clicking causes a the selection or the root to update</td>
+</tr>
+<tr>
+<td id="first">Style<td id="second">Controls if small or large icons are used</td>
+</tr>
+<tr>
+<td id="first">TextLabels</td><td id="second">Turns off or on text labels</td>
+</tr>
+</table>
+<strong>Key Events</strong>
+<table>
+<tr>
+<td id="first">OnClick</td><td id="second">A TShellBubbleItem was clicked. Check ItemIndex to determine which one</td>
+</tr>
+</table>
+</div>
+
+<div id="componentBreak"></div>
+
+<!-- TShellEdit -->
+<div id="paragraph"><img id="component" src="images/shelledit.jpg"><a name="4.2" id="up" href="#top"></a><strong>TShellEdit</strong> is a drop down edit control which allows the user to select a folder. The use can type or edit path names, or choose a folder from a drop down shell tree. You can set whether the user can type full paths, or paths relative to the current folder. You can also enable path completion, where a separate path combo is presented as the user types with a choice of folders and files that best match the user's input. TShellEdit and the related TShellPathEditBar are somewhat mutually exclusive controls. The shell edit acts like the explorer address bar from windows xp, while the shell path edit bar resembles Vista's newer bread crumb navigation bar.</div>
+
+<div id="paragraph"><strong>Key Properties</strong>
+<table>
+<tr>
+<td id="first">HotTrack</td><td id="second">Notify you when the mouse moves over a new node in the drop down tree</td>
+</tr>
+<tr>
+<td id="first">Options</td><td id="second">Options include use auto suggest, and use short relative paths</td>
+</tr>
+<tr>
+<td id="first">Root</td><td id="second">The root shell node of the shell edit control</td>
+</tr>
+<tr>
+<td id="first">SelectedNode</td><td id="second">The current shell node which is displayed in the edit portion of the control</td>
+</tr>
+<tr>
+<td id="first">SpecialFolder</td><td id="second">Sets a new root using a TSpecialFolder enumeration</td>
+</tr>
+<tr>
+<td id="first">StatusText<td id="second">Controls the text in the status area of the drop down</td>
+</tr>
+</table>
+<strong>Key Events</strong>
+<table>
+<tr>
+<td id="first">OnNodeHover</td><td id="second">A shell node was hovered over while HotTrack is enabled</td>
+</tr>
+<tr>
+<td id="first">OnSelect</td><td id="second">Notification that a new shell node was selected</td>
+</tr>
+</table>
+</div>
+
+<div id="componentBreak"></div>
+
+<!-- TShallPathEditBar -->
+<div id="paragraph"><img id="right" src="images/patheditbar.jpg"><img id="component" src="images/shellpathedit.jpg"><a name="4.3" id="up" href="#top"></a><strong>TShellPathEditBar</strong> is a Vista style bread crumb path bar control. As the path edit bar is a VCL implementation, it will work on Windows 2000 or later. TShellPathEditBar and TShellEdit are somewhat mutually exclusive. You may use either or both. One favors the XP explorer approach, while the other favors Vista. The control offers auto suggestion, drop down paths, and a horizontal shell node list separated by arrow bullet glyphs.</div>
+
+<div id="paragraph">
+Unlike the Vista bread crumb bar, you can choose to show icons at every node. You can also choose to always draw node buttons. Clicking an empty area allows you to edit the path as text. When no empty area is available, you can double click the control, or press space or enter, to invoke edit mode.</div>
+
+<div id="paragraph"><strong>Key Properties</strong>
+<table>
+<tr>
+<td id="first">Editing</td><td id="second">Toggles between node arrows input and text input</td>
+</tr>
+<tr>
+<td id="first">Root</td><td id="second">The root shell node of the shell edit control</td>
+</tr>
+<tr>
+<td id="first">SelectedNode</td><td id="second">The current shell node which is displayed as the last node in the path</td>
+</tr>
+<tr>
+<td id="first">ShowFiles</td><td id="second">Show non-folder nodes in the drop down lists</td>
+</tr>
+<tr>
+<td id="first">ShowSuggest<td id="second">Show the auto suggest list when editing</td>
+</tr>
+<tr>
+<td id="first">SpecialFolder</td><td id="second">Sets a new root using a TSpecialFolder enumeration</td>
+</tr>
+</table>
+
+<strong>Key Methods</strong>
+<table>
+<tr>
+<td id="first">Parse</td><td id="second">Convert text into a shell node and set that as the SelectedNode</td>
+</tr>
+</table>
+
+<strong>Key Events</strong>
+<table>
+<tr>
+<td id="first">OnChange</td><td id="second">Occurs when a the selected node changes</td>
+</tr>
+<tr>
+<td id="first">OnDefaultAction</td><td id="second">Allows you to intercept the execution of a non-folder node</td>
+</tr>
+</table>
+</div>
+
+<div id="componentBreak"></div>
+
+<!-- TShellTree -->
+<div id="paragraph"><img id="component" src="images/shelltree.jpg"><a name="4.4" id="up" href="#top"></a><strong>TShellTree</strong> is a tree view control, but with TShellTreeNode item in place of the traditional TTreeNode items. Since the items in the tree are populated from the system shell, you cannot add or alter items without adding to or altering the information tied to the computer through the shell. The tree control is essentially the left side tree window in explorer. It will update in real time when your computer's shell objects change.</div>
+
+<div id="paragraph">The shell tree control is a very useful control serving many purposes. You can use it to create your own browse for folder dialog, or you can root to a private folder to show the structure of application data such as project and resource files and folders on disk. To set the root to or selected node to any arbitrary location, you can use code similar to the following:
+
+<pre>procedure SetTreeRoot(Tree: TShellTree; const FolderName: string);
+var
+  Node: TShellNode;
+begin
+  Node := TShellNode.CreateFromFolder(FolderName);
+  Tree.Root := Node;
+  Node.Free;
+end;</pre>
+</div>
+
+<div id="paragraph"><strong>Key Properties</strong>
+<table>
+<tr>
+<td id="first">AllowContextMenu</td><td id="second">Allows the default system context menu to appear when the tree receives a right click event</td>
+</tr>
+<tr>
+<td id="first">Root</td><td id="second">The root shell node of the shell edit control</td>
+</tr>
+<tr>
+<td id="first">SelectedNode</td><td id="second">The current shell node which is displayed as the last node in the path</td>
+</tr>
+<tr>
+<td id="first">ShowSuggest<td id="second">Show the auto suggest list when editing</td>
+</tr>
+<tr>
+<td id="first">SpecialFolder</td><td id="second">Sets a new root using a TSpecialFolder enumeration</td>
+</tr>
+</table>
+
+<strong>Key Events</strong>
+<table>
+<tr>
+<td id="first">OnChange</td><td id="second">Occurs when a the selected node changes</td>
+</tr>
+<tr>
+<td id="first">OnCollapse</td><td id="second">Occurs when a node is collapsed</td>
+</tr>
+<tr>
+<td id="first">OnExpand</td><td id="second">Occurs when a node expands</td>
+</tr>
+</table>
+
+<strong>Key Related Functions</strong>
+<table>
+<tr>
+<td id="first">FindTreeNode</td><td id="second">Search for a node even if it has yet to have been created in the tree</td>
+</tr>
+</table>
+</div>
+
+<div id="componentBreak"></div>
+
+<!-- TShellView -->
+<div id="paragraph"><img id="component" src="images/shellview.jpg"><a name="4.5" id="up" href="#top"></a><img id="right" src="images/folders.jpg"><strong>TShellView</strong> is a control that hosts a real instance of explore's content window. Because of this, the actual functionality of the shell view control varies between Windows versions, which is a good thing. For example, Vista users can view very large thumbnails images in the shell view control. They can also filter items using the header panels. Everything you can do with the explorer.exe content pane, you do with the shell view controls</div>
+
+<div id="paragraph">Some useful features are detecting changes to the selected item, filtering or including items using the OnIncludeItem event, processing the default action to invoke custom code when an item is double clicked. You may also remove the context menu using the AllowContextMenu.</div>
+
+<div id="paragraph">Here is a simple idea for using a shell view control in your programs is to create a log file viewer. On one of your forms place a shell edit control which will be used by your users to check your applications logs files. You can point the shell view to your logging directory and filter the files based on log names for you application. You may also choose to have the log items sorted with the most recent first. You can then invoke you own custom log viewer when the user double clicks an log item, or if you log in test format, just allow the default action and notepad be launched opening your log file with no extra code. This approach make it very quick and easy to implement a log viewing feature into your own applications as the file system and the shell control handles most of the work for you.</div>
+
+<center><img id="center" style="border: 1px solid steelblue" src="images/backup.jpg" /></center>
+
+<div id="paragraph"><strong>Key Properties</strong>
+<table>
+<tr>
+<td id="first">AllowContextMenu</td><td id="second">Allows the default system context menu to appear when the tree receives a right click event</td>
+</tr>
+<tr>
+<td id="first">DefaultKeys</td><td id="second">Translates keystrokes to default actions, such as F2 to rename an item and backspace to go up one level</td>
+</tr>
+<tr>
+<td id="first">ParentRoot<td id="second">The top most shell node level of shell view. This property defaults to nil</td>
+</tr>
+<tr>
+<td id="first">Root</td><td id="second">The root shell node of the shell edit control</td>
+</tr>
+<tr>
+<td id="first">SelectedNode</td><td id="second">The current shell node which is displayed as the last node in the path</td>
+</tr>
+<tr>
+<td id="first">SpecialFolder</td><td id="second">Sets a new root using a TSpecialFolder enumeration</td>
+</tr>
+<tr>
+<td id="first">ViewMode</td><td id="second">Toggles the view mode between details, list, icons, thumbnails, and tiles</td>
+</tr>
+</table>
+
+<strong>Key Methods</strong>
+<table>
+<tr>
+<td id="first">ExecuteVerb</td><td id="second">Invoke a command from the folder's default context menu</td>
+</tr>
+<tr>
+<td id="first">Explore</td><td id="second">Navigate to a new folder folder given a path</td>
+</tr>
+<tr>
+<td id="first">GetItems</td><td id="second">Returns a list of items in the current view using selection and path parameters</td>
+</tr>
+<tr>
+<td id="first">Refresh</td><td id="second">Reloads the current view. Useful when you alter how you want to filter items using OnIncludeItem</td>
+</tr>
+</table>
+
+<strong>Key Events</strong>
+<table>
+<tr>
+<td id="first">OnDefaultAction</td><td id="second">Allows you to intercept the execution of any item in the view</td>
+</tr>
+<tr>
+<td id="first">OnChange</td><td id="second">Occurs when a the you navigate to a new root</td>
+</tr>
+<tr>
+<td id="first">OnIncludeItem</td><td id="second">Allows you to check each shell node as it populates the view. You can filter items in this event</td>
+</tr>
+<tr>
+<td id="first">OnSelectionChanged</td><td id="second">Fires when the selection changes. You may use GetItems to detect the current selection</td>
+</tr>
+</table>
+</div>
+
+<div id="componentBreak"></div>
+
+<!-- TShellImages -->
+<div id="paragraph"><img id="component" src="images/largeshellimages.jpg"><a name="4.6" id="up" href="#top"></a><img id="component" src="images/smallshellimages.jpg"><strong>TLargeShellImages</strong> and <strong>TSmallShellImages</strong> are image list components which both refer to the system image list. Their handles are shared, so adding multiple instances of either component to multiple forms does not increase your applications memory usage. The large image list holds the normal icon scheme dependent on the users configuration. Typically these are 32x32 pixel images, but the size can be larger based on user settings. The small image list holds small icons, almost always 16x16 pixel icons. You can use these image lists with any control that has an image list property.</div>
+
+
+<div id="componentBreak"></div>
+
+<!-- TShellBinding -->
+<div id="paragraph"><img id="component" src="images/shellbinding.jpg"><a name="4.7" id="up" href="#top"></a><strong>TShellBinding</strong> is a component which can be used to synchronize changes between shell controls. Though not totally necessary, it alleviates the programming tasks of connecting changes in one control to another. To use the shell binding component, just place shell controls on a form, then place a shell binding component on the same form. Double click the shell binging component to invoke the binding editor. Select the shell controls want want to synchronize, and click OK. When a shell edit, tree, and view controls are bound together, selecting a node shell tree in the shell tree updates the root in the shell view, and the selected node and text in the shell edit. Alternately, opening a folder in the shell view updates the selected node in the shell tree and shell edit controls.
+<center><img id="center" src="images/binding.jpg" /></center>
+The shell binding component removes the need to write this code:
+
+<pre>procedure TForm1.ShellBubblesClick(Sender: TObject);
+var
+  Node: TShellNode;
+begin
+  Node := ShellBubbles.Items[ShellBubbles.ItemIndex].Node;
+  ShellTree.SelectedNode := Node;
+  ShellEdit.SelectedNode := Node;
+  ShellView.Root := Node;
+end;</pre>
+</div>
+
+<div id="section"><a name="5" id="up" href="#top"></a>Notable Classes</div>
+<div id="paragraph">The Codebot Shell Controls package contains a notable TShellNode class defined in the Shltools unit. It is helpful to understand what this class is and how it functions when using the shell controls units. In general TShellNode is a class which represents a namespace item.</div>
+
+<div id="paragraph">Typically, when working within the shell namespace you need to be very careful when working with pointers to system allocated binary data known as item id lists. Working with item id lists can be difficult, as you are generally required to take ownership of the memory as soon you touch it, and then dispose of it later using the system task allocator. This can all be very complex, but the TShellNode class takes care this and other tasks for you.</div>
+
+<div id="paragraph">The TShellNode class has multiple constructors based on the way you want to work. Here is a summary of the constructors.</div>
+
+<div id="paragraph"><strong>Constructors</strong>
+<table>
+<tr>
+<td id="first">Create</td><td id="second">Create a node using a parent and a relative list. Either parameter can be nil. If both are nil the node refers to the system shell root which is the desktop. If parent is nil, then the new node is relative to the desktop.</td>
+</tr>
+<tr>
+<td id="first">CreateFromList</td><td id="second">Create a node using an absolute list. If the list is nil the new node refers to the desktop.</td>
+</tr>
+<tr>
+<td id="first">CreateFromObject</td><td id="second">Returns a new shell node given an IShellFolder object</td>
+</tr>
+<tr>
+<td id="first">CreateFromPath</td><td id="second">Creates a new node given a string path</td>
+</tr>
+</table>
+
+<strong>Constructor Related</strong>
+<table>
+<tr>
+<td id="first">Clone</td><td id="second">Clones a new node using the specified class type. If class type is nil, the clone is of the same class type as the original instance.</td>
+</tr>
+</table>
+</div>
+
+<div id="paragraph">Note, if you choose use a contructtor with an item id list, the shell node then owns the list. You should not attempt to free the list or share it with another newly created shell node. Freeing a parent node, frees all child nodes and their item id lists.</div>
+
+<div id="paragraph"><strong>Key Properties</strong>
+<table>
+<tr>
+<td id="first">AbsoluteList</td><td id="second">The node's absolute item id list</td>
+</tr>
+<tr>
+<td id="first">RelativeList</td><td id="second">The node's relative item id list</td>
+</tr>
+<tr>
+<td id="first">IsEqual</td><td id="second">Determines if two nodes reference the same shell namespace object</td>
+</tr>
+<tr>
+<td id="first">Items</td><td id="second">Indexed property of child shell node object</td>
+</tr>
+<tr>
+<td id="first">Count</td><td id="second">The number of child node in items. Accessing this property for the first time causes the node to enumerate and create children</td>
+</tr>
+<tr>
+<td id="first">HasChildren</td><td id="second">Detects if child nodes exist without creating them</td>
+</tr>
+<tr>
+<td id="first">ShellFolder</td><td id="second">A reference to the current item's IShellFolder object. If this property is nil the node refers to a non-folder object.</td>
+</tr>
+<tr>
+<td id="first">Name</td><td id="second">The name of the shell namespace object as it appear in explorer</td>
+</tr>
+<tr>
+<td id="first">Path</td><td id="second">The file path of the shell namespace object if it resides on disk</td>
+</tr>
+</table>
+
+<strong>Key Methods</strong>
+<table>
+<tr>
+<td id="first">Clear</td><td id="second">Destroys all references and children and unitializes the Count property</td>
+</tr>
+<tr>
+<td id="first">Execute</td><td id="second">Execute a verb from the node's shell context menu</td>
+</tr>
+<tr>
+<td id="first">GetAttributes</td><td id="second">Retrieve a the attribute flags of the node</td>
+</tr>
+</table>
+</div>
+
+<div style="clear: both">&nbsp;</div>
+</div><div id="bottom"></div>
+
+</body>
+</html>

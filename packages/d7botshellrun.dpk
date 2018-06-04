@@ -1,0 +1,67 @@
+
+(********************************************************)
+(*                                                      *)
+(*  Private Distribution of Codebot Class Library       *)
+(*  Version: 2.00.00                                    *)
+(*  Date: March 2009                                    *)
+(*                                                      *)
+(********************************************************)
+
+package d7botshellrun;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vclx,
+  vcl;
+
+contains
+  BaseTypes in '..\Units\BaseTypes.pas',
+  BlendTools in '..\Units\BlendTools.pas',
+  BtnCtrls in '..\Units\BtnCtrls.pas',
+  BtnEdit in '..\Units\BtnEdit.pas',
+  ClassTools in '..\Units\ClassTools.pas',
+  FileTools in '..\Units\FileTools.pas',
+  FormTools in '..\Units\FormTools.pas',
+  GraphThemes in '..\Units\GraphThemes.pas',
+  GraphTools in '..\Units\GraphTools.pas',
+  MathTools in '..\Units\MathTools.pas',
+  MSXMLParser in '..\Units\MSXMLParser.pas',
+  PopCtrls in '..\Units\PopCtrls.pas',
+  ProviderTools in '..\Units\ProviderTools.pas',
+  ScrollCtrls in '..\Units\ScrollCtrls.pas',
+  ShlCtrls in '..\Units\ShlCtrls.pas',
+  ShlIntf in '..\Units\ShlIntf.pas',
+  ShlTools in '..\Units\ShlTools.pas',
+  StrConst in '..\Units\StrConst.pas',
+  SysTools in '..\Units\SysTools.pas',
+  WinTools in '..\Units\WinTools.pas',
+  XMLObjects in '..\Units\XMLObjects.pas',
+  XMLParser in '..\Units\XMLParser.pas';
+
+end.
+
